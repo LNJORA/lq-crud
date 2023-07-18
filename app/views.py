@@ -29,3 +29,14 @@ def people(request):
     return render(request, 'people.html', {
         "data": d
     })
+
+
+def delete(request, id):
+    dd = People.objects.get(id=id)
+    dd.delete()
+    return HttpResponse("Delete Successful")
+
+
+def update(request, id):
+    l = People.objects.get(id=id)
+    return render(request, "edit.html", {"l": l})
